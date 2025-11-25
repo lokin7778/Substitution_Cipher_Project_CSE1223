@@ -232,9 +232,10 @@ public class SubstitutionCipher {
             
         } catch (Exception e) {
             System.out.println("File " + inFile + " not found or cannot write to " + outFile);
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     /**
