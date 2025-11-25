@@ -180,12 +180,16 @@ public class SubstitutionCipher {
      * @return the String entered by the user
      */
     public static String promptForString(Scanner in, String promptMsg) {
-        // TODO - complete this function
+        
+        System.out.print(promptMsg);
+        String message = in.nextLine();
 
-        // TODO - the following line is only here to allow this program to
-        //  compile.  Replace it and remove this comment when you complete
-        //  this method.
-        return null;
+        while ((message).length()<=0){
+            System.out.println("ERROR! Empty Input Not Allowed!");
+        }
+
+        return message;
+        
     }
 
     /**
