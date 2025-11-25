@@ -362,8 +362,6 @@ public class SubstitutionCipher {
 
             }
 
-            in.close();
-
         }
 
             
