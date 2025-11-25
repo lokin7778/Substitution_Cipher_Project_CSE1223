@@ -1,6 +1,6 @@
 /**
- * This project takes in a character input from the user which specifies whether we have to encode, decode or quit. And it takes the * text file as inputs from which to be readed and to which to be written to the ENCODED text or DECODED text which follows a three 
- * letter shift.
+ * This project takes in a character input from the user which specifies whether we have to encode, decode or quit. And it takes the * text file as inputs from which to be readed and to which to be written to the ENCODED text or DECODED text which follows a given
+ * number of shift.
  * 
  * @author Lokesh Narasimhan
  * @version 11/25/2025
@@ -33,13 +33,137 @@ public class SubstitutionCipher {
      *            Amount to shift each character of input to the right
      * @return the encrypted String as outlined above
      */
-    public static String shift(String input, int shift) {
-        // TODO - complete this function
 
-        // TODO - the following line is only here to allow this program to
-        //  compile.  Replace it and remove this comment when you complete
-        //  this method.
-        return null;
+    public static String shift(String input, int shift) {
+
+        StringBuilder sb = new StringBuilder(input); // creates a stringbuilder object for the inputted string
+        StringBuilder encodedString = new StringBuilder(); // creates a Stringbuilder object for returning stringbuilder
+
+        // checks if the shift is positive
+        if ( shift >= 0 ){
+
+            // for-loop to parse through the stringbuilder
+            for (int i = 0; i < sb.length(); i++){
+
+                char charInString = sb.charAt(i); // extracts the character at the index i;
+
+                // checks if the character at index i is uppercase
+                if ( Character.isUpperCase(charInString) ){
+
+                    int uppercaseIndex = UPPERCASE.indexOf(charInString); // finds the index of the character in the UPPERCASE string
+
+                    // checks if the index+shift value is less than 26
+                    if ( (uppercaseIndex+shift) < 26){
+
+                        char encodedUpperCaseCharacter = UPPERCASE.charAt(uppercaseIndex+shift); // extracts the encoded character
+                        encodedString.append(encodedUpperCaseCharacter); // appends the encoded character to the stringbuilder object
+                    
+                    }
+
+                    else {
+
+                        char encodedUpperCaseCharacter = UPPERCASE.charAt((uppercaseIndex+shift)%26); // extracts the encoded character based on the modulo operator
+                        encodedString.append(encodedUpperCaseCharacter); // appends it to the stringbuilder object
+
+                    }
+
+                }
+
+                // checks if the character at index i is lowercase
+                else if ( Character.isLowerCase(charInString) ){
+                    
+                    int lowerCaseIndex = LOWERCASE.indexOf(charInString);
+
+                    if ( (lowerCaseIndex+shift) < 26){
+
+                        char encodedLowerCaseCharacter = LOWERCASE.charAt(lowerCaseIndex+shift);
+                        encodedString.append(encodedLowerCaseCharacter);
+                    
+                    }
+
+                    else {
+
+                        char encodedLowerCaseCharacter = LOWERCASE.charAt((lowerCaseIndex+shift)%26);
+                        encodedString.append(encodedLowerCaseCharacter);
+                        
+                    }
+
+                }
+
+                // checks if the character at index i is a whitespace or a number
+                else {
+
+                    encodedString.append(charInString);
+
+                }
+
+            }
+
+        }
+
+        // condition for negative shifts
+        else if ( shift < 0 ){
+
+            for (int i = 0; i < sb.length(); i++){
+
+                char charInString = sb.charAt(i); // extracts the character at the index i;
+
+                // checks if the character at index i is uppercase
+                if ( Character.isUpperCase(charInString) ){
+
+                    int uppercaseIndex = UPPERCASE.indexOf(charInString); // gets the uppercase Index
+
+                    // checks if the sum (actually difference as shift is negative) is greater than 0
+                    if ( (uppercaseIndex+shift) > 0){
+
+                        char encodedUpperCaseCharacter = UPPERCASE.charAt(uppercaseIndex+shift); 
+                        encodedString.append(encodedUpperCaseCharacter);
+                    
+                    }
+
+                    else {
+
+                        char encodedUpperCaseCharacter = UPPERCASE.charAt((uppercaseIndex+shift)%26);
+                        encodedString.append(encodedUpperCaseCharacter);
+
+                    }
+
+                }
+
+                // checks if the character at index i is lowercase
+                else if ( Character.isLowerCase(charInString) ){
+                    
+                    int lowerCaseIndex = LOWERCASE.indexOf(charInString);
+
+                    if ( (lowerCaseIndex+shift) > 0){
+
+                        char encodedLowerCaseCharacter = LOWERCASE.charAt(lowerCaseIndex+shift);
+                        encodedString.append(encodedLowerCaseCharacter);
+                    
+                    }
+
+                    else {
+
+                        char encodedLowerCaseCharacter = LOWERCASE.charAt((lowerCaseIndex+shift)%26);
+                        encodedString.append(encodedLowerCaseCharacter);
+                        
+                    }
+
+                }
+
+                else {
+
+                    encodedString.append(charInString);
+
+                }
+
+            }
+            
+        }
+
+        // finally convert the stringbuilder to string and then return the value
+        return encodedString.toString();
+
     }
 
     /**
