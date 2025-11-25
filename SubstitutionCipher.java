@@ -204,7 +204,6 @@ public class SubstitutionCipher {
             }
         }
 
-        in.close();
         return finalInput;
 
     }
@@ -240,7 +239,6 @@ public class SubstitutionCipher {
                 String encodedLine = shift(line, shift); // calls the shift() method which encodes the character according to the shift value
 
                 writer.write(encodedLine); // writes the encoded line to the output file
-                writer.write("\n");
             }
             
         } catch (Exception e) {
@@ -292,7 +290,6 @@ public class SubstitutionCipher {
             }
         }
 
-        in.close();
         return choice;
     }
 
@@ -326,8 +323,7 @@ public class SubstitutionCipher {
                 String outputFile = in.nextLine();
 
                 System.out.print("Enter a shift amount: ");
-                int shiftAmount = in.nextInt();
-                in.nextLine();
+                int shiftAmount = Integer.parseInt(in.nextLine());
 
                 transformFile(inputFile, outputFile, shiftAmount);
 
@@ -357,6 +353,7 @@ public class SubstitutionCipher {
 
             else if ( choice=='Q' ){
 
+                System.out.println();
                 System.out.println("Goodbye!");
                 overallFlag = false;
 
@@ -364,7 +361,7 @@ public class SubstitutionCipher {
 
         }
 
-            
+        in.close();    
     }
 
 }
