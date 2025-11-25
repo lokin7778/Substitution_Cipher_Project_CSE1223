@@ -269,11 +269,11 @@ public class SubstitutionCipher {
 
         // declares all of the variables needed to use
         String input;
-        boolean flag = false;
+        boolean flag = true;
         char choice = ' ';
 
         // a while loop to check if the user entered a valid choice and running till the user enters a valid choice
-        while (!flag){
+        while (flag){
             System.out.print("Enter your choice: ");
             input = in.nextLine();
 
@@ -281,7 +281,7 @@ public class SubstitutionCipher {
                 char c = Character.toUpperCase(input.charAt(0));
                 if (c=='E' || c=='D' || c=='Q'){
                     choice = c;
-                    flag = true;
+                    flag = false;
                 }
                 else{
                     System.out.println("ERROR! Enter a valid value");
@@ -306,12 +306,67 @@ public class SubstitutionCipher {
     }
 
     public static void main(String[] args) {
+
         Scanner in = new Scanner(System.in);
-        displayMenu();
 
-        
+        boolean overallFlag = true;
 
-        in.close();
+        while(overallFlag){
+
+            displayMenu(); // calls the display menu method which displays all the options available
+
+            char choice = getChoice(in); // calls the getChoice method and stores in the choice entered by the user in the choice variable
+
+            if ( choice=='E' ){
+
+                System.out.print("Enter an input file: ");
+                String inputFile = in.nextLine();
+
+                System.out.print("Enter an output file: ");
+                String outputFile = in.nextLine();
+
+                System.out.print("Enter a shift amount: ");
+                int shiftAmount = in.nextInt();
+                in.nextLine();
+
+                transformFile(inputFile, outputFile, shiftAmount);
+
+                System.out.println("Finished writing to file.");
+                System.out.println();
+
+            }
+
+            else if ( choice=='D' ){
+
+                System.out.print("Enter an input file: ");
+                String inputFile = in.nextLine();
+
+                System.out.print("Enter an output file: ");
+                String outputFile = in.nextLine();
+
+                System.out.print("Enter a shift amount: ");
+                int shiftAmount = in.nextInt();
+                in.nextLine();
+
+                transformFile(inputFile, outputFile, shiftAmount);
+
+                System.out.println("Finished writing to file.");
+                System.out.println();
+
+            }
+
+            else if ( choice=='Q' ){
+
+                System.out.println("Goodbye!");
+                overallFlag = false;
+
+            }
+
+            in.close();
+
+        }
+
+            
     }
 
 }
