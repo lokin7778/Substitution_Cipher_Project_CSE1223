@@ -1,0 +1,135 @@
+/**
+ * This project takes in a character input from the user which specifies whether we have to encode, decode or quit. And it takes the * text file as inputs from which to be readed and to which to be written to the ENCODED text or DECODED text which follows a three 
+ * letter shift.
+ * 
+ * @author Lokesh Narasimhan
+ * @version 11/25/2025
+ */
+
+import java.util.Scanner;
+
+public class SubstitutionCipher {
+
+    /**
+     * Private constants used to shift characters for the substitution cipher.
+     */
+    private static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
+
+    /**
+     * Constructs a new String where each letter in the String input is shifted
+     * by the amount shift to the right, preserving whether the original
+     * character was uppercase or lowercase. For example, the String "ABC" with
+     * shift 3 would cause this method to return "DEF". A negative value should
+     * shift to the left. For example, the String "ABC" with shift -3 would
+     * cause this method to return "XYZ". Punctuation, numbers, whitespace and
+     * other non-letter characters should be left unchanged. NOTE: For full
+     * credit you are REQUIRED to use a StringBuilder to build the String in
+     * this method rather than using String concatenation.
+     *
+     * @param input
+     *            String to be encrypted
+     * @param shift
+     *            Amount to shift each character of input to the right
+     * @return the encrypted String as outlined above
+     */
+    public static String shift(String input, int shift) {
+        // TODO - complete this function
+
+        // TODO - the following line is only here to allow this program to
+        //  compile.  Replace it and remove this comment when you complete
+        //  this method.
+        return null;
+    }
+
+    /**
+     * Displays the message "promptMsg" to the user and reads the next full line
+     * that the user enters. If the user enters an empty string, reports the
+     * error message "ERROR! Empty Input Not Allowed!" and then loops,
+     * repeatedly prompting them with "promptMsg" to enter a new string until
+     * the user enters a non-empty String
+     *
+     * @param in
+     *            Scanner to read user input from
+     * @param promptMsg
+     *            Message to display to user to prompt them for input
+     * @return the String entered by the user
+     */
+    public static String promptForString(Scanner in, String promptMsg) {
+        // TODO - complete this function
+
+        // TODO - the following line is only here to allow this program to
+        //  compile.  Replace it and remove this comment when you complete
+        //  this method.
+        return null;
+    }
+
+    /**
+     * Opens the file inFile for reading and the file outFile for writing,
+     * reading one line at a time from inFile, shifting it the number of
+     * characters given by "shift" and writing that line to outFile. If an
+     * exception occurs, must report the error message: "ERROR! File inFile not
+     * found or cannot write to outFile" where "inFile" and "outFile" are the
+     * filenames given as parameters.
+     *
+     * @param inFile
+     *            the file to be transformed
+     * @param outFile
+     *            the file to write the transformed output to
+     * @param shift
+     *            the amount to shift the characters from inFile by
+     * @return false if an exception occurs and the error message is written,
+     *         otherwise true
+     */
+    public static boolean transformFile(String inFile, String outFile,
+            int shift) {
+        // TODO - complete this function
+
+        // TODO - the following line is only here to allow this program to
+        //  compile.  Replace it and remove this comment when you complete
+        //  this method.
+        return false;
+    }
+
+    /**
+     * Prompts the user to enter a single character choice. The only allowable
+     * values are 'E', 'D' or 'Q'. All other values are invalid, including all
+     * values longer than one character in length, however the user is allowed
+     * to enter values in either lower or upper case. If the user enters an
+     * invalid value, the method displays the error message "ERROR! Enter a
+     * valid value!" and then prompts the user repeatedly until a valid value is
+     * entered. Returns a single uppercase character representing the user's
+     * choice.
+     *
+     * @param in
+     *            Scanner to read user choices from
+     * @return the user's choice as an uppercase character
+     */
+    public static char getChoice(Scanner in) {
+        // TODO - complete this function
+
+        // TODO - the following line is only here to allow this program to
+        //  compile.  Replace it and remove this comment when you complete
+        //  this method.
+        return 0;
+    }
+
+    /**
+     * Displays the menu of choices to the user.
+     */
+    public static void displayMenu() {
+        System.out.println("[E]ncode a file");
+        System.out.println("[D]ecode a file");
+        System.out.println("[Q]uit");
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        displayMenu();
+
+        // TODO - complete this procedure with your own implementation
+
+        in.close();
+    }
+
+}
