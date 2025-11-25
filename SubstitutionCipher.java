@@ -7,6 +7,10 @@
  */
 
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class SubstitutionCipher {
 
@@ -189,7 +193,7 @@ public class SubstitutionCipher {
         }
 
         return message;
-        
+
     }
 
     /**
@@ -209,13 +213,27 @@ public class SubstitutionCipher {
      * @return false if an exception occurs and the error message is written,
      *         otherwise true
      */
-    public static boolean transformFile(String inFile, String outFile,
-            int shift) {
-        // TODO - complete this function
+    public static boolean transformFile(String inFile, String outFile, int shift) {
+        
+        // use a try block to create BufferedReader and BufferedWriter objects which hold the input file and output file respectively
+        try (BufferedReader reader = new BufferedReader(new FileReader(inFile));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(outFile))){
 
-        // TODO - the following line is only here to allow this program to
-        //  compile.  Replace it and remove this comment when you complete
-        //  this method.
+            // use a while loop to parse through the input file until it is empty
+            while ( (reader.readLine()) != null ){
+
+                String line = reader.readLine(); // reads a line from the input file
+
+                String encodedLine = shift(line, shift); // calls the shift() method which encodes the character according to the shift value
+
+                writer.write(encodedLine); // writes the encoded line to the output file
+                writer.write("\n");
+            }
+            
+        } catch (Exception e) {
+            System.out.println("File " + inFile + " not found or cannot write to " + outFile);
+        }
+
         return false;
     }
 
