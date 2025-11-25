@@ -186,13 +186,13 @@ public class SubstitutionCipher {
     public static String promptForString(Scanner in, String promptMsg) {
         
         System.out.print(promptMsg);
-        String message = in.nextLine();
 
-        while ((message).length()<=0){
+        while ((in.nextLine()).length()<=0){
             System.out.println("ERROR! Empty Input Not Allowed!");
+            String message = in.nextLine();
         }
 
-        return message;
+        return in.nextLine();
 
     }
 
@@ -253,11 +253,17 @@ public class SubstitutionCipher {
      * @return the user's choice as an uppercase character
      */
     public static char getChoice(Scanner in) {
-        // TODO - complete this function
 
-        // TODO - the following line is only here to allow this program to
-        //  compile.  Replace it and remove this comment when you complete
-        //  this method.
+        System.out.print("Enter your choice: ");
+
+        while ( !(in.nextLine().equalsIgnoreCase("E")) || !(in.nextLine().equalsIgnoreCase("D")) || !(in.nextLine().equalsIgnoreCase("Q")) || (in.nextLine().length()>1)){
+
+            System.out.println("ERROR! Enter a valid value!");
+            String choice = in.nextLine();
+            char charChoice = choice.charAt(0);
+
+        }
+
         return 0;
     }
 
