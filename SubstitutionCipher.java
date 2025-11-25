@@ -186,13 +186,26 @@ public class SubstitutionCipher {
     public static String promptForString(Scanner in, String promptMsg) {
         
         System.out.print(promptMsg);
+        in = new Scanner(System.in);
 
-        while ((in.nextLine()).length()<=0){
-            System.out.println("ERROR! Empty Input Not Allowed!");
-            String message = in.nextLine();
+        boolean flag = true;
+        String finalInput = "";
+        while (flag) {
+
+            String input = in.nextLine();
+
+            if (input.length()<=0){
+                System.out.println("ERROR! Empty Input Not Allowed!");
+            }
+
+            else{
+                finalInput = finalInput + input;
+                flag = false;
+            }
         }
 
-        return in.nextLine();
+        in.close();
+        return finalInput;
 
     }
 
@@ -254,17 +267,33 @@ public class SubstitutionCipher {
      */
     public static char getChoice(Scanner in) {
 
-        System.out.print("Enter your choice: ");
+        // declares all of the variables needed to use
+        String input;
+        boolean flag = false;
+        char choice = ' ';
 
-        while ( !(in.nextLine().equalsIgnoreCase("E")) || !(in.nextLine().equalsIgnoreCase("D")) || !(in.nextLine().equalsIgnoreCase("Q")) || (in.nextLine().length()>1)){
+        // a while loop to check if the user entered a valid choice and running till the user enters a valid choice
+        while (!flag){
+            System.out.print("Enter your choice: ");
+            input = in.nextLine();
 
-            System.out.println("ERROR! Enter a valid value!");
-            String choice = in.nextLine();
-            char charChoice = choice.charAt(0);
-
+            if (input.length() == 1){
+                char c = Character.toUpperCase(input.charAt(0));
+                if (c=='E' || c=='D' || c=='Q'){
+                    choice = c;
+                    flag = true;
+                }
+                else{
+                    System.out.println("ERROR! Enter a valid value");
+                }
+            }
+            else{
+                System.out.println("ERROR! Enter a valid value");
+            }
         }
 
-        return 0;
+        in.close();
+        return choice;
     }
 
     /**
@@ -280,7 +309,7 @@ public class SubstitutionCipher {
         Scanner in = new Scanner(System.in);
         displayMenu();
 
-        // TODO - complete this procedure with your own implementation
+        
 
         in.close();
     }
